@@ -309,15 +309,17 @@ Analisis remote working juga menunjukkan bahwa hubungan antara remote working da
 
 Project ini menunjukkan proses analisis data mulai dari data intake, cleaning, exploratory analysis, outlier analysis, hingga visualization menggunakan Python.
 
+---
+
 ### Data Quality Summary
 ```
-| Cleaning Step | Rows | Change |
-|---|---:|---:|
-| Raw dataset | 15,445 | — |
-| Remove `Unnamed: 0` column | 15,445 | Column removed |
-| Remove duplicates | 9,692 | -5,753 |
-| Remove missing salary | 9,127 | -565 |
-| Filter Data Analyst | **1,322** | -7,805 |```
+| Cleaning Step              | Rows      | Change         |
+|----------------------------|----------:|---------------:|
+| Raw dataset                | 15,445    | —              |
+| Remove `Unnamed: 0` column | 15,445    | Column removed |
+| Remove duplicates          | 9,692     | -5,753         |
+| Remove missing salary      | 9,127     | -565           |
+| Filter Data Analyst        | **1,322** | -7,805         |```
 
 The dataset was reduced from **15,445 rows to 1,322 Data Analyst records** after duplicate removal, missing salary handling, and role filtering.
 
