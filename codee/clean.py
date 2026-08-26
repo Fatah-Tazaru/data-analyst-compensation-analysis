@@ -26,42 +26,51 @@ print(
 # 3. HAPUS DUPLIKAT
 # =========================
 
+before_duplicate = len(df)
+
 df = df.drop_duplicates()
 
-print(
-  "Setelah duplicate dihapus: ", df.shape
-  )
+after_duplicate = len(df)
+removed_duplicate = before_duplicate - after_duplicate
+
+print("Setelah duplicate dihapus: ", df.shape)
+print("Duplicate rows dihapus: ", removed_duplicate)
   
 # =========================
 # 4. BUAT DATA ANALISIS YANG MEMILIKI USD
 # =========================
 
+before_missing = len(df)
 
 analysis_data = df.dropna(
-  subset=["salary_in_usd"]
-  )
-  
-print(
-  "Setelah menangani missing salary usd: ",
-  analysis_data.shape
-  )
+    subset=["salary_in_usd"]
+)
+
+after_missing = len(analysis_data)
+removed_missing = before_missing - after_missing
+
+print("Setelah menangani missing salary usd: ", analysis_data.shape)
+print("Missing salary rows dihapus: ", removed_missing)
   
 # =========================
 # 5. FILTER DATA ANALISIS
 # =========================
 
+before_filter = len(analysis_data)
+
 da_data = analysis_data[
-  analysis_data["Designation"].str.contains(
-    "Data analyst",
-    case=False,
-    na=False
+    analysis_data["Designation"].str.contains(
+        "Data analyst",
+        case=False,
+        na=False
     )
-  ]
-  
-print(
-  "Jumlah Data analyst: ",
-  len(da_data)
-  )
+]
+
+after_filter = len(da_data)
+removed_filter = before_filter - after_filter
+
+print("Jumlah Data analyst: ", len(da_data))
+print("Rows di luar Data Analyst: ", removed_filter)
   
 # =========================
 # 6. SIMPAN DATA HASIL CLEANING
