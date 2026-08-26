@@ -231,6 +231,7 @@ Project ini menggunakan:
 
 📁 Project Structure
 
+```
 data-analyst-compensation-analysis/
 │
 ├── Filee/
@@ -251,7 +252,7 @@ data-analyst-compensation-analysis/
 ├── README.md
 ├── LICENSE
 └── .gitignore
-
+```
 ---
 
 🚀 How to Run
