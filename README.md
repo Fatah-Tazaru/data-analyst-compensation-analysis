@@ -1,37 +1,8 @@
-cat <<'EOT' > README.md
 # 📊 Data Analyst Compensation & Salary Structure Analysis
 
-Proyek portofolio Data Analysis & Engineering berbasis Python ini menganalisis variabel-variabel yang memengaruhi kompensasi profesi Data Analyst secara global.
+Proyek analisis data berbasis Python ini bertujuan untuk mengeksplorasi dan memahami faktor-faktor utama yang memengaruhi tingkat gaji seorang Data Analyst secara global. Proses analisis diawali dengan tahap pembersihan data menggunakan skrip Python (`clean.py`) untuk menghapus ribuan data duplikat dan memfilter peran spesifik. Selanjutnya, pemrosesan data dilakukan melalui analisis statistik (`analisis.py`) untuk menghitung kisaran gaji serta mendeteksi nilai ekstrem (*outliers*) menggunakan metode IQR. Hasil analisis ini kemudian divisualisasikan secara otomatis (`grafik.py`) ke dalam bentuk grafik distribusi, diagram batang, dan heatmap.
 
-## 📁 Project Structure
+Berdasarkan hasil analisis, ditemukan beberapa poin penting. Pertama, tingkat pengalaman kerja merupakan faktor paling dominan yang berbanding lurus dengan kenaikan gaji, di mana posisi Senior-level (SE) mengantongi rata-rata gaji sebesar $123.7K dibandingkan posisi Entry-level (EN) yang berada di kisaran $84K. Kedua, distribusi gaji secara keseluruhan miring ke kanan (*right-skewed*) karena adanya data kompensasi ekstrem yang mencapai $774K. Ketiga, pasar kerja didominasi oleh perusahaan berukuran sedang (*Medium*), yang juga mencatatkan rata-rata penawaran gaji tertinggi ($109,009). Sementara itu, faktor rasio kerja jarak jauh (*remote ratio*) tidak menunjukkan perbedaan gaji yang signifikan pada tingkat pengalaman yang sama.
 
-```text
-coba/
-│
-├── Filee/
-│   ├── DataScience_Salaries_And_Fields.csv
-│   └── clean_data.csv
-│
-├── codee/
-│   ├── intake.py
-│   ├── clean.py
-│   ├── analisis.py
-│   └── grafik.py
-│
-├── outputs/
-│   ├── charts/
-│   │   ├── salary_distribution.png
-│   │   ├── average_salary_by_experience.png
-│   │   ├── count_by_experience.png
-│   │   ├── salary_boxplot_by_experience.png
-│   │   ├── salary_experience_company_heatmap.png
-│   │   ├── top_company_location_count.png
-│   │   └── salary_experience_remote_heatmap.png
-│   └── reports/
-│
-└── README.md
-‎💡 Key Business Insights
-‎* Pengalaman Kerja: Memiliki hubungan positif terkuat dengan kenaikan gaji (EN: ~$84K ➔ SE: ~$123.7K).
-‎* Distribusi Gaji: bersifat right-skewed akibat keberadaan outlier bernilai tinggi hingga $774K.
-‎* Ukuran Perusahaan: Perusahaan skala Medium (M) memberikan rata-rata gaji tertinggi ($109,009) dan mendominasi pasar.
-‎* Remote Ratio: Variabel 0% dan 100% remote tidak menunjukkan perbedaan gaji yang signifikan.
+Untuk menjalankan seluruh rangkaian analisis ini, kamu dapat mengeksekusi file Python secara berurutan mulai dari `clean.py`, `analisis.py`, hingga `grafik.py`.
+
