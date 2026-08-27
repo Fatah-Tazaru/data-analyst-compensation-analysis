@@ -153,6 +153,37 @@ Outlier tidak otomatis dianggap sebagai kesalahan data. Nilai tersebut terlebih 
 
 ---
 
+## 📊 Statistical Analysis
+
+To evaluate whether salary distributions differ across experience levels, a Kruskal-Wallis test was performed.
+
+### Kruskal-Wallis Test
+
+- **H-statistic:** 219.21
+- **p-value:** < 0.001
+- **Epsilon-squared:** 0.164
+
+The result indicates a statistically significant difference in salary distributions across experience groups.
+
+### Post-Hoc Analysis
+
+Pairwise Mann-Whitney U tests with Holm correction were performed to identify which experience groups differed significantly.
+
+**Significant differences:**
+- EN vs EX
+- EN vs MI
+- EN vs SE
+- MI vs SE
+
+**No statistically significant difference:**
+- EX vs MI
+- EX vs SE
+
+These results provide statistical support for the observed relationship between experience level and salary.
+
+
+---
+
 💡 Key Findings
 
 1. Experience dan Salary
@@ -195,7 +226,7 @@ Remote Working Ratio
 
 Hasilnya menunjukkan bahwa perbedaan salary berdasarkan remote working tidak selalu konsisten ketika experience level diperhitungkan.
 
-Hal ini menunjukkan bahwa experience perlu dipertimbangkan ketika membandingkan compensation berdasarkan remote working.
+Hal ini menunjukkan pola peningkatan salary pada experience level yang lebih tinggi.
 
 ---
 
@@ -226,6 +257,7 @@ Project ini menggunakan:
 - Matplotlib — data visualization
 - Seaborn — statistical visualization
 - Flask — web application / presentation layer
+- SciPy — statistical hypothesis testing
 
 ---
 
