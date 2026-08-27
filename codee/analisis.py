@@ -1,5 +1,8 @@
 from pathlib import Path
 import pandas as pd
+from scipy.stats import kruskal
+from itertools import combinations
+from scipy.stats import mannwhitneyu
 
 BASE_DIR = Path(__file__).resolve().parent
 file_path = BASE_DIR.parent / "Filee" / "clean_data.csv"
@@ -372,3 +375,165 @@ experience_remote_count = (
 )
 
 print(experience_remote_count)
+
+# ==========================================
+# SAMPLE PROPORTION ANALYSIS
+# ==========================================
+
+print("\n=== PROPORSI EXPERIENCE ===")
+
+experience_count = df["Experience"].value_counts()
+experience_pct = (
+    df["Experience"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(2)
+)
+
+experience_summary = pd.DataFrame({
+    "count": experience_count,
+    "percentage": experience_pct
+})
+
+print(experience_summary)
+
+
+print("\n=== PROPORSI COMPANY SIZE ===")
+
+company_size_count = df["Company_Size"].value_counts()
+company_size_pct = (
+    df["Company_Size"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(2)
+)
+
+company_size_summary = pd.DataFrame({
+    "count": company_size_count,
+    "percentage": company_size_pct
+})
+
+print(company_size_summary)
+
+
+print("\n=== PROPORSI REMOTE WORKING ===")
+
+remote_count = df["Remote_Working_Ratio"].value_counts()
+remote_pct = (
+    df["Remote_Working_Ratio"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(2)
+)
+
+remote_summary = pd.DataFrame({
+    "count": remote_count,
+    "percentage": remote_pct
+})
+
+print(remote_summary)
+
+
+# ==========================================
+# STATISTICAL TEST
+# ==========================================
+
+
+print("\n=== KRUSKAL-WALLIS TEST: EXPERIENCE VS SALARY ===")
+
+groups = [
+    group["salary_in_usd"].values
+    for _, group in df.groupby("Experience")
+]
+
+kw_statistic, kw_p_value = kruskal(*groups)
+
+n = len(df)
+k = len(groups)
+
+epsilon_squared = (
+    kw_statistic - k + 1
+) / (
+    n - k
+)
+
+print("H-statistic:", kw_statistic)
+print("p-value:", kw_p_value)
+print("Epsilon-squared:", epsilon_squared)
+
+if kw_p_value < 0.05:
+    print("Result: Significant difference between experience groups.")
+else:
+    print("Result: No statistically significant difference between experience groups.")
+    
+# ==========================================
+# POST-HOC MANN-WHITNEY U TEST
+# WITH HOLM CORRECTION
+# ==========================================
+
+
+print("\n=== POST-HOC MANN-WHITNEY U TEST ===")
+
+experience_groups = {
+    experience: group["salary_in_usd"].values
+    for experience, group in df.groupby("Experience")
+}
+
+results = []
+
+for group1, group2 in combinations(experience_groups.keys(), 2):
+
+  u_statistic, mw_p_value = mannwhitneyu(
+        experience_groups[group1],
+        experience_groups[group2],
+        alternative="two-sided"
+    )
+
+  results.append({
+        "Group 1": group1,
+        "Group 2": group2,
+        "U statistic": u_statistic,
+        "raw p-value": mw_p_value
+    })
+
+
+posthoc_df = pd.DataFrame(results)
+
+
+# ==========================================
+# HOLM CORRECTION
+# ==========================================
+
+sorted_indices = (
+    posthoc_df["raw p-value"]
+    .argsort()
+    .tolist()
+)
+
+m = len(posthoc_df)
+
+adjusted_p = [0.0] * m
+
+for rank, index in enumerate(sorted_indices):
+    adjusted_p[index] = min(
+        1.0,
+        posthoc_df.loc[index, "raw p-value"] * (m - rank)
+    )
+
+# Pastikan adjusted p-value bersifat monoton
+for i in range(1, len(sorted_indices)):
+    previous_index = sorted_indices[i - 1]
+    current_index = sorted_indices[i]
+
+    adjusted_p[current_index] = max(
+        adjusted_p[previous_index],
+        adjusted_p[current_index]
+    )
+
+posthoc_df["adjusted p-value"] = adjusted_p
+
+posthoc_df["significant"] = (
+    posthoc_df["adjusted p-value"] < 0.05
+)
+
+print(posthoc_df)
