@@ -114,6 +114,22 @@ Filee/clean_data.csv
 
 ---
 
+## Visualizations
+
+### Average Salary by Experience
+
+![Average Salary by Experience](outputs/charts/salary_by_experience.png)
+
+### Salary by Remote Working Ratio
+
+![Salary by Remote Working Ratio](outputs/charts/salary_remote_working.png)
+
+### Salary by Company Size
+
+![Salary by Company Size](outputs/charts/salary_company_size.png)
+
+---
+
 # 🔎 Exploratory Data Analysis
 
 ## 1. Experience Level
@@ -449,44 +465,63 @@ data-analyst-compensation-analysis/
 
 ---
 
-# ▶️ How to Run
+How to Run
 
-## 1. Clone the repository
-
-```bash
+1. Clone the Repository
+```
 git clone https://github.com/Fatah-Tazaru/data-analyst-compensation-analysis.git
 cd data-analyst-compensation-analysis
 ```
 
-## 2. Install dependencies
+2. Install Dependencies
 
-```bash
-pip install pandas numpy matplotlib seaborn flask scipy
+```
+pip install -r requirements.txt
 ```
 
-## 3. Run data intake
+3. Run Data Intake
 
-```bash
-python codee/intake.py
+```
+python src/data_intake.py
 ```
 
-## 4. Run data cleaning
+This step provides an initial overview of the dataset, including its shape, columns, data types, missing values, and other basic information.
 
-```bash
-python codee/clean.py
+4. Run Data Cleaning
+
+```
+python src/clean.py
 ```
 
-## 5. Run analysis
+This step removes unnecessary columns and duplicates, handles missing salary values, and prepares the dataset for analysis.
 
-```bash
-python codee/analisis.py
+5. Run Analysis
+
+```
+python src/analisis.py
 ```
 
-## 6. Generate visualizations
+This step performs the exploratory analysis and calculates the main salary statistics and business insights.
 
-```bash
-python codee/grafik.py
+6. Generate Visualizations
+
 ```
+python src/grafik.py
+```
+
+The generated charts are saved in the project's output directory.
+
+7. Run the Flask Application
+
+```
+python app.py
+```
+
+Then open the application in your browser:
+
+http://127.0.0.1:8080
+
+The Flask application provides a simple web-based presentation of the analysis results.
 
 ---
 
@@ -534,6 +569,16 @@ Senior-level Data Analysts have higher typical salaries than Entry-level and Mid
 At the same time, salary should not be evaluated using experience alone. Company size, remote working, job designation, location, and other factors can also contribute to salary differences.
 
 Therefore, this project treats the results as **observed patterns within the dataset rather than causal conclusions or definitive market benchmarks**.
+
+---
+
+## Limitations
+
+- The dataset is a public dataset and may not represent the entire global Data Analyst job market.
+- Salary distributions contain extreme values that can affect the mean.
+- The analysis describes relationships and patterns in the dataset but does not establish causation.
+- Geographic representation is uneven, with a large proportion of records coming from the United States.
+- Salary values may vary depending on factors that are not fully captured in the dataset, such as industry, company, location, and specific responsibilities.
 
 ---
 

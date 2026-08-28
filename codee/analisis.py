@@ -106,28 +106,26 @@ print(
 # ==========================================
 
 Q1 = df["salary_in_usd"].quantile(0.25)
-
 Q3 = df["salary_in_usd"].quantile(0.75)
 
 IQR = Q3 - Q1
 
 lower_bound = Q1 - 1.5 * IQR
-
 upper_bound = Q3 + 1.5 * IQR
 
+outliers = df[
+    (df["salary_in_usd"] < lower_bound) |
+    (df["salary_in_usd"] > upper_bound)
+]
 
-print("\n=== IQR OUTLIER ===")
-
-print("Q1:", Q1)
-
-print("Q3:", Q3)
-
-print("IQR:", IQR)
-
-print("Lower bound:", lower_bound)
-
-print("Upper bound:", upper_bound)
-
+print("=== OUTLIER ANALYSIS ===")
+print(f"Q1           : ${Q1:,.2f}")
+print(f"Q3           : ${Q3:,.2f}")
+print(f"IQR          : ${IQR:,.2f}")
+print(f"Lower Bound  : ${lower_bound:,.2f}")
+print(f"Upper Bound  : ${upper_bound:,.2f}")
+print(f"Outlier Count: {len(outliers)}")
+print(f"Outlier %    : {len(outliers) / len(df) * 100:.2f}%")
 
 # ==========================================
 # MENCARI POTENTIAL OUTLIER
