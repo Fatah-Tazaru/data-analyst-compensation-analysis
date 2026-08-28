@@ -465,9 +465,10 @@ data-analyst-compensation-analysis/
 
 ---
 
-How to Run
+# 🚀 How to Run
 
-1. Clone the Repository
+1. Clone Repository
+
 ```
 git clone https://github.com/Fatah-Tazaru/data-analyst-compensation-analysis.git
 cd data-analyst-compensation-analysis
@@ -482,46 +483,42 @@ pip install -r requirements.txt
 3. Run Data Intake
 
 ```
-python src/data_intake.py
+python codee/intake.py
 ```
 
-This step provides an initial overview of the dataset, including its shape, columns, data types, missing values, and other basic information.
+This step checks the initial dataset structure, columns, data types, missing values, duplicate rows, unique values, and data consistency.
 
 4. Run Data Cleaning
 
 ```
-python src/clean.py
+python codee/clean.py
 ```
 
-This step removes unnecessary columns and duplicates, handles missing salary values, and prepares the dataset for analysis.
+This step removes unnecessary columns and duplicate rows, handles missing salary values, filters relevant Data Analyst records, and generates the cleaned dataset.
 
-5. Run Analysis
+5. Run Exploratory Data Analysis
 
 ```
-python src/analisis.py
+python codee/analisis.py
 ```
 
-This step performs the exploratory analysis and calculates the main salary statistics and business insights.
+This step calculates descriptive statistics and analyzes salary patterns based on experience, company characteristics, and remote working.
 
 6. Generate Visualizations
 
 ```
-python src/grafik.py
+python codee/grafik.py
 ```
 
-The generated charts are saved in the project's output directory.
-
-7. Run the Flask Application
+The generated charts are saved in:
 
 ```
-python app.py
+outputs/charts/
 ```
 
-Then open the application in your browser:
+7. Review the Results
 
-http://127.0.0.1:8080
-
-The Flask application provides a simple web-based presentation of the analysis results.
+The analysis results and visualizations can be reviewed through the generated output files and charts in the repository.
 
 ---
 
