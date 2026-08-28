@@ -38,6 +38,23 @@ The main objectives of this project are:
 
 ---
 
+## Key Results
+
+| Metric | Result |
+|---|---:|
+| Original Dataset | 15,445 rows |
+| Cleaned Dataset | 9,127 rows |
+| Data Analyst Records | 1,322 rows |
+| Average Salary | ~$106.1K |
+| Median Salary | ~$100K |
+| Q1 Salary | ~$70K |
+| Q3 Salary | ~$133K |
+| Maximum Salary | ~$774K |
+
+The analysis focuses on Data Analyst roles after removing duplicates and records with missing salary values.
+
+---
+
 ## 📂 Dataset
 
 The project uses the **Data Science Salaries And Fields** dataset.
