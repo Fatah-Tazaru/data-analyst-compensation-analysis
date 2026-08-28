@@ -111,22 +111,21 @@ The cleaned dataset is stored in:
 ```text
 Filee/clean_data.csv
 ```
-
 ---
 
 ## Visualizations
 
 ### Average Salary by Experience
 
-![Average Salary by Experience](outputs/charts/salary_by_experience.png)
+![Average Salary by Experience](outputs/charts/average_salary_by_experience.png)
 
-### Salary by Remote Working Ratio
+### Salary Distribution
 
-![Salary by Remote Working Ratio](outputs/charts/salary_remote_working.png)
+![Salary by Remote Working Ratio](outputs/charts/salary_distribution.png)
 
-### Salary by Company Size
+### Count by Experience
 
-![Salary by Company Size](outputs/charts/salary_company_size.png)
+![Salary by Company Size](outputs/charts/count_by_experience.png)
 
 ---
 
